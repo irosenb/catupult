@@ -34,6 +34,7 @@ gem 'jbuilder', '~> 1.2'
 # Omniauth
 gem 'omniauth-jawbone'
 gem 'omniauth-taskrabbit'
+gem 'google-api-client'
 
 gem 'figaro'
 gem 'jawbone'
