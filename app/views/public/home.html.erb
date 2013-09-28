@@ -1,3 +1,7 @@
 <h1>Welcome to our site!</h1>
 
-<%= link_to "Sign in with Jawbone", "/auth/jawbone" %>
+<% if current_user %>
+  Signed in as <%= full_name_of(current_user) %>
+<% else %>
+  <%= link_to "Sign in with Jawbone", "/auth/jawbone" %>
+<% end %>
