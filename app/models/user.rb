@@ -1,14 +1,7 @@
 class User < ActiveRecord::Base
-	def client
-		client = Jawbone::Client.new(token)
-		raise client.user
+	def jawbone_client
+		@jawbone_client ||= Jawbone::Client.new(token)
 	end
-
-	def sleep
-		
-	end
-
-
 
 	def self.find_or_create_from_jawbone(auth)
 		if user = where(uid: auth['uid']).first
