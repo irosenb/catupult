@@ -39,6 +39,9 @@ GEM
     execjs (2.0.2)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
+    figaro (0.7.0)
+      bundler (~> 1.0)
+      rails (>= 3, < 5)
     hashie (2.0.5)
     hike (1.2.3)
     httpauth (0.2.0)
@@ -76,6 +79,7 @@ GEM
       omniauth (~> 1.0)
     omniauth-taskrabbit (0.0.1)
       omniauth-oauth2 (~> 1.0.2)
+    pg (0.15.1)
     polyglot (0.3.3)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -133,10 +137,12 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
+  figaro
   jbuilder (~> 1.2)
   jquery-rails
   omniauth-jawbone
   omniauth-taskrabbit
+  pg
   rails (= 4.0.0)
   sass-rails (~> 4.0.0)
   sdoc
