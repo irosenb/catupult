@@ -4,6 +4,7 @@ Cheerup::Application.routes.draw do
   root "public#home"
 
   get "auth/jawbone/callback" => 'sessions#create'
+  get 'signout', to: 'sessions#destroy', as: 'signout'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -44,7 +45,7 @@ Cheerup::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
