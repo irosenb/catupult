@@ -1,4 +1,9 @@
 class User < ActiveRecord::Base
+
+	def jawbone_client
+		@jawbone_client ||= Jawbone::Client.new(token)
+	end
+
 	def self.find_or_create_from_jawbone(auth)
 		if user = where(uid: auth['uid']).first
 			user.token = auth['credentials']['token']
