@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
 	end
 
 	def get_sleep(id)
-		jawbone_client.sleep
+		sleep = jawbone_client.sleep(id)
+		
 	end
 
 	def self.find_or_create_from_jawbone(auth)

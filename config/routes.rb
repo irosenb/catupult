@@ -5,6 +5,8 @@ Cheerup::Application.routes.draw do
 
   get "auth/jawbone/callback" => 'sessions#create'
   get 'signout', to: 'sessions#destroy', as: 'signout'
+
+  get 'sleep' => 'users#sleep'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
