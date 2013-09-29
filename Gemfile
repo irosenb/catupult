@@ -37,7 +37,7 @@ gem 'omniauth-taskrabbit'
 
 gem 'figaro'
 gem 'jawbone'
-
+gem 'JSON'
 
 group :development do
 	gem 'better_errors'
