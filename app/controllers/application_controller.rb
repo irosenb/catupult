@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
   		end
   	end
     user.get_mood
+    render :nothing => true
   end
 
   private
