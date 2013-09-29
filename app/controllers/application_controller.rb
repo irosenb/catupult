@@ -4,7 +4,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def sleep
-    current_user.get_sleep
+  	puts params.inspect
+  	events_hash = JSON.parse(params[:events])
+  	events_hash["events"].each do |event|
+  		sleep_event = event["event_xid"] if event["event_type"] = "sleep"
+  	end
+    current_user.get_sleep(id)
   end
 
   private
