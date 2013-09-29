@@ -4,12 +4,20 @@ class User < ActiveRecord::Base
 	end
 
 	def sleep_trends
-		jawbone_client.trends
+		jawbone_client.trends["data"]["items"][""]
 	end
 
 	def get_sleep(id)
 		new_sleep = jawbone_client.sleep(id)
-		puts sleep_trends.inspect
+		trends_sleep = sleep_trends
+
+		percentage = (new_sleep/trends_sleep) * 100
+		if percentage < 50 
+			# Do something here 
+		end	 
+	end
+
+	def tired_detector
 	end
 
 	def self.find_or_create_from_jawbone(auth)

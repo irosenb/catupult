@@ -27,6 +27,7 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.0)
     atomic (1.1.14)
+    awesome_print (1.1.0)
     better_errors (1.0.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -162,6 +163,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   better_errors
   binding_of_caller
   coffee-rails (~> 4.0.0)
