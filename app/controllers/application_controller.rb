@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   def sleep
   	puts params.inspect
   	events_array = params["events"]
-    user = User.find(uid: events_array.first['user_xid'])
+    user = User.find_by_uid(events_array.first['user_xid'])
   	events_array.each do |event|
   		if event["event_type"] == "mood" and event["action"] == "creation"
   			sleep_event = event["event_xid"]
