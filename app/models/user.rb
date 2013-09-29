@@ -7,6 +7,10 @@ class User < ActiveRecord::Base
 		jawbone_client.trends
 	end
 
+	def get_sleep(id)
+		jawbone_client.sleep
+	end
+
 	def self.find_or_create_from_jawbone(auth)
 		if user = where(uid: auth['uid']).first
 			user.token = auth['credentials']['token']
