@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 	end
 
 	def sleep_trends
-		jawbone_client.trends["data"]["items"][""]
+		jawbone_client.trends["data"]["items"]["s_asleep_time"]
 	end
 
 	def get_sleep(id)
