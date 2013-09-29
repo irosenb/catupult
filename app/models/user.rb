@@ -20,11 +20,22 @@ class User < ActiveRecord::Base
 	# def tired_detector
 	# end
 
+	def correct_phone_number
+			if phone_number.start_with?("1")
+				self.phone_number = phone_number.prepend("+")
+			elsif phone_number.start_with?("+1")
+			else
+				self.phone_number = phone_number.prepend("+1")
+			end
+			phone_number.gsub('-', '')
+			self.save
+	end
+
 	def send_text
 		@client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
-		 
-		message = @client.account.sms.messages.create(:body => "Jenny please?! I love you <3",
-		    :to => "+16465449091",     # Replace with your phone number
+
+		message = @client.account.sms.messages.create(:body => "Hey, you seem a little down. Here's a cat pic to cheer you up. http://placekitten.com/#{rand(400..600)}/#{rand(400..600)}",
+		    :to => "+1#{phone_number}",     # Replace with your phone number
 		    :from => "+18484562816")   # Replace with your Twilio number
 		puts message.sid
 	end
