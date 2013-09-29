@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
 	def get_sleep(id)
 		new_sleep = jawbone_client.sleep(id)
-		raise trend_sleep = jawbone_client.trends
+		puts sleep_trends.inspect
 	end
 
 	def self.find_or_create_from_jawbone(auth)
