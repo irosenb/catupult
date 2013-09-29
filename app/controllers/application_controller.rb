@@ -8,11 +8,11 @@ class ApplicationController < ActionController::Base
   	events_hash = JSON.parse(params[:events])
     user = User.find(uid: events_hash['user_xid'])
   	events_hash["events"].each do |event|
-  		if event["event_type"] == "sleep" and event["action"] == "creation"
+  		if event["event_type"] == "mood" and event["action"] == "creation"
   			sleep_event = event["event_xid"]
   		end
   	end
-    user.get_sleep(sleep_event)
+    user.get_mood(sleep_event)
   end
 
   private

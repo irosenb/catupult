@@ -11,18 +11,12 @@ class User < ActiveRecord::Base
 	# 	jawbone_client.trends["data"]["items"]["s_asleep_time"]
 	# end
 
-	# def get_sleep(id)
-	# 	new_sleep = jawbone_client.sleep(id)
-	# 	trends_sleep = sleep_trends
+	def get_mood(id)
+		pp new_mood = jawbone_client.mood_event(id)
+	end
 
-	# 	percentage = (new_sleep/trends_sleep) * 100
-	# 	if percentage < 50
-	# 		# Do something here
-	# 	end
-	# end
-
-	# def tired_detector
-	# end
+	def tired_detector
+	end
 
 	def correct_phone_number
 			if phone_number.start_with?("1")
