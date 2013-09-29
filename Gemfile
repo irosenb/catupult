@@ -41,6 +41,7 @@ gem 'figaro'
 gem 'jawbone'
 gem 'json'
 gem 'twilio-ruby'
+gem 'httparty'
 
 group :development do
 	gem 'better_errors'

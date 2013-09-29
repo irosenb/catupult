@@ -6,12 +6,13 @@ class ApplicationController < ActionController::Base
   def sleep
   	puts params.inspect
   	events_hash = JSON.parse(params[:events])
+    user = User.find(uid: events_hash['user_xid'])
   	events_hash["events"].each do |event|
-  		if event["event_type"] == "sleep" and event["action"] == "creation" 
+  		if event["event_type"] == "sleep" and event["action"] == "creation"
   			sleep_event = event["event_xid"]
   		end
   	end
-    current_user.get_sleep(sleep_event)
+    user.get_sleep(sleep_event)
   end
 
   private
