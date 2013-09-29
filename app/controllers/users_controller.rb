@@ -17,10 +17,6 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def sleep
-    @user.get_sleep
-  end
-
   # GET /users/1/edit
   def edit
   end

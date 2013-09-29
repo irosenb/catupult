@@ -164,6 +164,7 @@ DEPENDENCIES
   jawbone
   jbuilder (~> 1.2)
   jquery-rails
+  json
   omniauth-jawbone
   omniauth-taskrabbit
   pg

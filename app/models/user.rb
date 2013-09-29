@@ -3,13 +3,13 @@ class User < ActiveRecord::Base
 		@jawbone_client ||= Jawbone::Client.new(token)
 	end
 
-	def trends
+	def sleep_trends
 		jawbone_client.trends
 	end
 
 	def get_sleep(id)
-		sleep = jawbone_client.sleep(id)
-		
+		new_sleep = jawbone_client.sleep(id)
+		raise trend_sleep = jawbone_client.trends
 	end
 
 	def self.find_or_create_from_jawbone(auth)
