@@ -40,6 +40,7 @@ gem 'omniauth-taskrabbit'
 gem 'figaro'
 gem 'jawbone'
 gem 'json'
+gem 'twilio-ruby'
 
 group :development do
 	gem 'better_errors'

@@ -3,21 +3,30 @@ class User < ActiveRecord::Base
 		@jawbone_client ||= Jawbone::Client.new(token)
 	end
 
-	def sleep_trends
-		jawbone_client.trends["data"]["items"]["s_asleep_time"]
-	end
+	# def sleep_trends
+	# 	jawbone_client.trends["data"]["items"]["s_asleep_time"]
+	# end
 
-	def get_sleep(id)
-		new_sleep = jawbone_client.sleep(id)
-		trends_sleep = sleep_trends
+	# def get_sleep(id)
+	# 	new_sleep = jawbone_client.sleep(id)
+	# 	trends_sleep = sleep_trends
 
-		percentage = (new_sleep/trends_sleep) * 100
-		if percentage < 50 
-			# Do something here 
-		end	 
-	end
+	# 	percentage = (new_sleep/trends_sleep) * 100
+	# 	if percentage < 50 
+	# 		# Do something here 
+	# 	end	 
+	# end
 
-	def tired_detector
+	# def tired_detector
+	# end
+
+	def send_text
+		@client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
+		 
+		message = @client.account.sms.messages.create(:body => "Jenny please?! I love you <3",
+		    :to => "+16465449091",     # Replace with your phone number
+		    :from => "+18484562816")   # Replace with your Twilio number
+		puts message.sid
 	end
 
 	def self.find_or_create_from_jawbone(auth)
