@@ -1,4 +1,9 @@
 class User < ActiveRecord::Base
+
+	def has_phone_number?
+		phone_number != nil
+	end
+
 	def jawbone_client
 		@jawbone_client ||= Jawbone::Client.new(token)
 	end
