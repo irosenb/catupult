@@ -3,18 +3,22 @@ class User < ActiveRecord::Base
 		@jawbone_client ||= Jawbone::Client.new(token)
 	end
 
+	def trends
+		@trends ||= jawbone_client.trends
+	end
+
 	def sleep_trends
-		jawbone_client.trends["data"]["items"][""]
+		@sleep_trends ||= trends["data"]["items"]
 	end
 
 	def get_sleep(id)
-		new_sleep = jawbone_client.sleep(id)
+		recent_sleep = jawbone_client.sleep(id)
 		trends_sleep = sleep_trends
 
-		percentage = (new_sleep/trends_sleep) * 100
-		if percentage < 50 
-			# Do something here 
-		end	 
+		percentage = (recent_sleep/trends_sleep) * 100
+		if percentage < 50
+			# Do something here
+		end
 	end
 
 	def tired_detector
