@@ -11,8 +11,11 @@ class User < ActiveRecord::Base
 	# 	jawbone_client.trends["data"]["items"]["s_asleep_time"]
 	# end
 
-	def get_mood(id)
-		pp new_mood = jawbone_client.mood_event(id)
+	def get_mood
+		new_mood = jawbone_client.mood
+		if new_mood["data"]["title"] == "Totally Done"
+			send_text
+		end
 	end
 
 	def tired_detector

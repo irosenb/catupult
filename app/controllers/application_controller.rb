@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   			sleep_event = event["event_xid"]
   		end
   	end
-    user.get_mood(sleep_event)
+    user.get_mood
   end
 
   private
