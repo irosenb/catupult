@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 	# 	jawbone_client.trends["data"]["items"]["s_asleep_time"]
 	# end
 	def mood
-		new_mood = jawbone_client.mood
+		jawbone_client.mood
 	end
 
 	def get_mood
