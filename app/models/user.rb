@@ -10,11 +10,13 @@ class User < ActiveRecord::Base
 	# def sleep_trends
 	# 	jawbone_client.trends["data"]["items"]["s_asleep_time"]
 	# end
+	def mood
+		new_mood = jawbone_client.mood
+	end
 
 	def get_mood
-		new_mood = jawbone_client.mood
-		if new_mood["data"]["title"] == "Totally Done"
-			send_text
+		if mood["data"]["title"] == "Totally Done"
+			self.send_text
 		end
 	end
 
