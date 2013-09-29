@@ -16,9 +16,9 @@ class User < ActiveRecord::Base
 	# 	trends_sleep = sleep_trends
 
 	# 	percentage = (new_sleep/trends_sleep) * 100
-	# 	if percentage < 50 
-	# 		# Do something here 
-	# 	end	 
+	# 	if percentage < 50
+	# 		# Do something here
+	# 	end
 	# end
 
 	# def tired_detector
@@ -33,13 +33,14 @@ class User < ActiveRecord::Base
 			end
 			phone_number.gsub('-', '')
 			self.save
+			phone_number
 	end
 
 	def send_text
 		@client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
 
 		message = @client.account.sms.messages.create(:body => "Hey, you seem a little down. Here's a cat pic to cheer you up. http://placekitten.com/#{rand(400..600)}/#{rand(400..600)}",
-		    :to => "+1#{phone_number}",     # Replace with your phone number
+		    :to => "#{correct_phone_number}",     # Replace with your phone number
 		    :from => "+18484562816")   # Replace with your Twilio number
 		puts message.sid
 	end
