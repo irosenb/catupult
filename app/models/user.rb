@@ -38,7 +38,8 @@ class User < ActiveRecord::Base
 	def send_text
 		@client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
 
-		message = @client.account.sms.messages.create(:body => "Hey, you seem a little down. Here's a cat pic to cheer you up. http://placekitten.com/#{rand(400..600)}/#{rand(400..600)}",
+		message = @client.account.sms.messages.create(
+				:body => "Hey, you seem a little down. Here's a cat pic to cheer you up. http://placekitten.com/#{rand(400..600)}/#{rand(400..600)}",
 		    :to => "#{correct_phone_number}",     # Replace with your phone number
 		    :from => "+18484562816")   # Replace with your Twilio number
 		puts message.sid

@@ -5,5 +5,5 @@
   Signed in as <%= full_name_of(current_user) %>
   <%= link_to "Sign out", signout_path %>
 <% else %>
-  <%= link_to "Sign in with Jawbone", "/auth/jawbone", :class => "btn" %>
+  <%= link_to "Sign in with Jawbone", "/auth/jawbone", :class => "btn btn-primary jawbone" %>
 <% end %>
