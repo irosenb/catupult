@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
 	end
 
 	def get_mood
-		if mood["data"]["title"] == "Totally Done"
+		if mood["data"]["title"] == "Totally Done" or mood["data"]["title"] == "Dragging"
 			self.send_text
 		end
 	end
@@ -31,6 +31,8 @@ class User < ActiveRecord::Base
 				self.phone_number = phone_number.prepend("+1")
 			end
 			phone_number.gsub('-', '')
+			phone_number.gsub('(', '')
+			phone_number.gsub(')', '')
 			self.save
 			phone_number
 	end
