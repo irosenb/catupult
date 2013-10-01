@@ -7,6 +7,10 @@ class User < ActiveRecord::Base
 	def jawbone_client
 		@jawbone_client ||= Jawbone::Client.new(token)
 	end
+	
+	def twilio_client
+		@twilio_client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
+	end
 	# def sleep_trends
 	# 	jawbone_client.trends["data"]["items"]["s_asleep_time"]
 	# end
@@ -37,10 +41,13 @@ class User < ActiveRecord::Base
 			phone_number
 	end
 
-	def doggies
-		@client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
+	def recieve_options
+		
+	end
 
-		message = @client.account.sms.messages.create(
+	def doggies
+
+		message = twilio_client.account.sms.messages.create(
 				:body => "Welcome to Catupult! Do you like dogs or cats? Text dogs to see dogs, or cats to see cats.",
 		    :to => "#{correct_phone_number}",     # Replace with your phone number
 		    :from => "+18484562816")   # Replace with your Twilio number
@@ -50,7 +57,7 @@ class User < ActiveRecord::Base
 	def send_text
 		@client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
 
-		message = @client.account.sms.messages.create(
+		message = twilio_client.account.sms.messages.create(
 				:body => "Hey, you seem a little down. Here's a cat pic to cheer you up. http://placekitten.com/#{rand(400..600)}/#{rand(400..600)}",
 		    :to => "#{correct_phone_number}",     # Replace with your phone number
 		    :from => "+18484562816")   # Replace with your Twilio number
