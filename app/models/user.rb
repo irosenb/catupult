@@ -37,6 +37,16 @@ class User < ActiveRecord::Base
 			phone_number
 	end
 
+	def doggies
+		@client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
+
+		message = @client.account.sms.messages.create(
+				:body => "Welcome to Catupult! Do you like dogs or cats? Text dogs to see dogs, or cats to see cats.",
+		    :to => "#{correct_phone_number}",     # Replace with your phone number
+		    :from => "+18484562816")   # Replace with your Twilio number
+		puts message.sid
+	end
+
 	def send_text
 		@client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
 
