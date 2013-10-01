@@ -33,6 +33,9 @@ class User < ActiveRecord::Base
 		end
 	end
 
+	def tired_detector
+	end
+
 	def correct_phone_number
 			phone_number.gsub('-', '')
 			phone_number.gsub('(', '')
