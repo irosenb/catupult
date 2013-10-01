@@ -37,11 +37,11 @@ class User < ActiveRecord::Base
 	end
 
 	def correct_phone_number
-			phone_number.gsub('-', '')
-			phone_number.gsub('(', '')
-			phone_number.gsub(')', '')
-			self.save
-			phone_number
+		phone_number.gsub('-', '')
+		phone_number.gsub('(', '')
+		phone_number.gsub(')', '')
+		self.save
+		phone_number
 	end
 
 	def recieve_options
