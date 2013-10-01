@@ -42,11 +42,12 @@ class User < ActiveRecord::Base
 	end
 
 	def recieve_options
-		
+		twilio_client.account.messages.each do |message|
+    	puts message.body
+    end
 	end
 
 	def doggies
-
 		message = twilio_client.account.sms.messages.create(
 				:body => "Welcome to Catupult! Do you like dogs or cats? Text dogs to see dogs, or cats to see cats.",
 		    :to => "#{correct_phone_number}",     # Replace with your phone number
@@ -55,8 +56,6 @@ class User < ActiveRecord::Base
 	end
 
 	def send_text
-		@client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
-
 		message = twilio_client.account.sms.messages.create(
 				:body => "Hey, you seem a little down. Here's a cat pic to cheer you up. http://placekitten.com/#{rand(400..600)}/#{rand(400..600)}",
 		    :to => "#{correct_phone_number}",     # Replace with your phone number
