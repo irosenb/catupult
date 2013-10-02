@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
 		phone_number
 	end
 
-	def recieve_options
+	def receive_options
 		twilio_client.account.list.each do |message|
     	puts message.inspect
     end
