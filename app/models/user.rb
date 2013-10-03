@@ -37,6 +37,7 @@ class User < ActiveRecord::Base
 	end
 
 	def correct_phone_number
+		phone_number.gsub('+1')
 		phone_number.gsub('-', '')
 		phone_number.gsub('(', '')
 		phone_number.gsub(')', '')
