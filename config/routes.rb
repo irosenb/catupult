@@ -7,6 +7,7 @@ Cheerup::Application.routes.draw do
   get 'signout', to: 'sessions#destroy', as: 'signout'
 
   post 'sleep' => 'application#sleep'
+  post 'sms' => 'application#sms'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
