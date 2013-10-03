@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-	:before_save correct_phone_number
+	# :before_save correct_phone_number
 
 	def has_phone_number?
 		phone_number != nil
@@ -44,11 +44,13 @@ class User < ActiveRecord::Base
 		phone_number
 	end
 
-	def receive_options
-		twilio_client.account.list.each do |message|
-    	puts message.inspect
-    end
-	end
+	# def receive_options
+	# 	twilio_client.account.list.each do |message|
+ #    	puts message.inspect
+ #    	user = where(phone_number: params[:From])
+    	
+ #    end
+	# end
 
 	def doggies
 		send_message("Welcome to Catupult! Do you like dogs or cats? Text dogs to see dogs, or cats to see cats.")
