@@ -1,5 +1,10 @@
 class User < ActiveRecord::Base
-	# :before_save correct_phone_number
+	before_save (on: :update) do 
+		unless self.phone_number.starts_with?
+			
+		end
+		self.phone_number = phone_number.prepend("+1") 
+	end
 
 	def has_phone_number?
 		phone_number != nil
@@ -22,7 +27,7 @@ class User < ActiveRecord::Base
 	def message(body)
 		message = twilio_client.account.sms.messages.create(
 				:body => "#{body}",
-		    :to   => "+1#{phone_number}",
+		    :to   => "#{phone_number}",
 		    :from => "+18484562816")
 		puts message.sid
 	end
