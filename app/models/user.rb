@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
-	# :before_save correct_phone_number
+	before_save do 
+		phone_number = Phony.normalize(phone_number).prepend("+1") unless phone_number.nil?
+		# phone_number = phone_number.prepend("+1") 
+	end
 
 	def has_phone_number?
 		phone_number != nil

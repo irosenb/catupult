@@ -45,6 +45,7 @@ gem 'jawbone'
 gem 'json'
 gem 'twilio-ruby'
 gem 'httparty'
+gem 'phony'
 
 group :development do
 	gem 'better_errors'
