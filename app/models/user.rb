@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
 	def message(body)
 		message = twilio_client.account.sms.messages.create(
 				:body => "#{body}",
-		    :to   => "+1#{phone_number}",
+		    :to   => "#{phone_number}",
 		    :from => "+18484562816")
 		puts message.sid
 	end
@@ -39,13 +39,13 @@ class User < ActiveRecord::Base
 	def tired_detector
 	end
 
-	def correct_phone_number
-		phone_number.gsub('-', '')
-		phone_number.gsub('(', '')
-		phone_number.gsub(')', '')
-		self.save
-		phone_number
-	end
+	# def correct_phone_number
+	# 	phone_number.gsub('-', '')
+	# 	phone_number.gsub('(', '')
+	# 	phone_number.gsub(')', '')
+	# 	self.save
+	# 	phone_number
+	# end
 
 	# def receive_options
 	# 	twilio_client.account.list.each do |message|
