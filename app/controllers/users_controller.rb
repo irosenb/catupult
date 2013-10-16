@@ -42,8 +42,6 @@ class UsersController < ApplicationController
   def update
     phone_number = params["user"]["phone_number"]
     params["user"]["phone_number"] = Phony.normalize(phone_number).prepend("+1") unless phone_number.nil?
-    # binding.pry
-    # raise params.inspect
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to root_path, notice: 'Phone number successfully added.' }
