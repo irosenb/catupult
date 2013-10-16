@@ -21,6 +21,7 @@ class ApplicationController < ActionController::Base
     from = params["From"]
     @user = User.find_by_phone_number(from)
     @user.message("hello there")
+    render :nothing => true 
     # render :sms 
     # @user.sms
   end

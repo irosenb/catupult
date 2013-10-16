@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+	
 	def has_phone_number?
 		phone_number != nil
 	end
@@ -27,7 +28,7 @@ class User < ActiveRecord::Base
 
 	def get_mood
 		if mood["data"]["title"] == "Totally Done" or mood["data"]["title"] == "Dragging"
-			self.send_text
+			self.message("You seem to be a bit down. Here's a picture to cheer you up")
 		end
 	end
 
