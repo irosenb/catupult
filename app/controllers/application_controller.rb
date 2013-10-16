@@ -18,6 +18,11 @@ class ApplicationController < ActionController::Base
 
   def sms
     puts params.inspect
+    from = params["From"]
+    @user = User.find_by_phone_number(from)
+    @user.message("hello there")
+    # render :sms 
+    # @user.sms
   end
 
   private
