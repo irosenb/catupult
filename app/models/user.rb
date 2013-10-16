@@ -1,10 +1,4 @@
-class User < ActiveRecord::Base
-	before_save (on: :update) do 
-		unless self.phone_number.starts_with?
-			
-		end
-		self.phone_number = phone_number.prepend("+1") 
-	end
+class User < ActiveRecord::Base	
 
 	def has_phone_number?
 		phone_number != nil
