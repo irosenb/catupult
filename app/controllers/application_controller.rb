@@ -20,7 +20,8 @@ class ApplicationController < ActionController::Base
     puts params.inspect
     from = params["From"]
     @user = User.find_by_phone_number(from)
-    render :sms 
+    @user.message("hello there")
+    # render :sms 
     # @user.sms
   end
 
