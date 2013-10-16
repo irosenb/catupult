@@ -1,6 +1,6 @@
-<h1>Please enter your telephone number</h1>
+<h1>Phone number</h1>
 
-<%= form_for(@user) do |f| %>
+<%= form_for @user, :html => {:class => "form-horizontal"} do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -13,12 +13,14 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :phone_number %><br>
-    <%= f.text_field :phone_number %>
+  <div class="form-group phone-num">
+    <%= f.label :phone_number, :class => "col-lg-3 control-label" %>
+    <div class="col-lg-9">
+      <%= f.text_field :phone_number, :class => "form-control" %>
+    </div>
   </div>
   <div class="actions">
-    <%= f.submit "Submit" %>
+    <%= f.submit "Submit", :class => "btn btn-primary" %>
   </div>
 <% end %>
 

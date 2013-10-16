@@ -40,7 +40,8 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    # raise params.inspect
+    phone_number = params["user"]["phone_number"]
+    params["user"]["phone_number"] = Phony.normalize(phone_number).prepend("+1") unless phone_number.nil?
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to root_path, notice: 'Phone number successfully added.' }

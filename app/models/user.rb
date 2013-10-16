@@ -1,5 +1,4 @@
-class User < ActiveRecord::Base	
-
+class User < ActiveRecord::Base
 	def has_phone_number?
 		phone_number != nil
 	end
@@ -30,18 +29,6 @@ class User < ActiveRecord::Base
 		if mood["data"]["title"] == "Totally Done" or mood["data"]["title"] == "Dragging"
 			self.send_text
 		end
-	end
-
-	def tired_detector
-	end
-
-	def correct_phone_number
-		phone_number.gsub('+1')
-		phone_number.gsub('-', '')
-		phone_number.gsub('(', '')
-		phone_number.gsub(')', '')
-		self.save
-		phone_number
 	end
 
 	# def receive_options

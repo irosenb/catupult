@@ -110,6 +110,7 @@ GEM
     omniauth-taskrabbit (0.0.1)
       omniauth-oauth2 (~> 1.0.2)
     pg (0.15.1)
+    phony (1.9.0)
     polyglot (0.3.3)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -190,6 +191,7 @@ DEPENDENCIES
   omniauth-jawbone
   omniauth-taskrabbit
   pg
+  phony
   rails (= 4.0.0)
   sass-rails (~> 4.0.0)
   sdoc
