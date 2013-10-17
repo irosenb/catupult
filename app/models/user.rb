@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
 
 	def get_mood
 		if mood["data"]["title"] == "Totally Done" or mood["data"]["title"] == "Dragging"
-			self.message("Hey, you seem a little down. Here's a picture to cheer you up: ")
+			self.message("Hey, you seem a little down. Here's a cat pic to cheer you up. http://placekitten.com/#{rand(400..600)}/#{rand(400..600)")
 		end
 	end
 
