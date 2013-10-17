@@ -7,12 +7,13 @@ class ApplicationController < ActionController::Base
   	puts params.inspect
   	events_array = params["events"]
     user = User.find_by_uid(events_array.first['user_xid'])
+    is_mood = false
   	events_array.each do |event|
-  		if event["event_type"] == "mood" and event["action"] == "creation"
-  			sleep_event = event["event_xid"]
+  		if event["type"] == "mood" and event["action"] == "creation"
+        is_mood = true
   		end
   	end
-    user.get_mood
+    user.get_mood if is_mood
     render :nothing => true
   end
 
